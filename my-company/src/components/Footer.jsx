@@ -8,7 +8,7 @@ function Footer() {
             marginTop: 'auto'
         }}>
             <p style={{ margin: 0 }}>
-                © 2024 Our Company. All rights reserved. | 
+                © 2025 Our Company. All rights reserved. | 
                 <span style={{ marginLeft: '10px', color: '#6c757d' }}>
                     Building the future, together.
                 </span>
