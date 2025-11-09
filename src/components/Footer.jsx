@@ -10,7 +10,7 @@ function Footer() {
             bottom: '0',
             width: '100%'
         }}>
-            <p style={{ margin: 0 }}>© 2023 City Lovers</p>
+            <p style={{ margin: 0 }}>© 2025 City Lovers</p>
         </footer>
     );
 }

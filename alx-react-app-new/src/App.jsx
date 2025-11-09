@@ -3,16 +3,18 @@ import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile'
+import Counter from './components/Counter'
 import './App.css'
 
 function App() {
   return (
-    <div style={{ paddingBottom: '60px' }}> {/* Added padding for fixed footer */}
+    <div style={{ minHeight: '100vh', position: 'relative', paddingBottom: '60px' }}>
       <WelcomeMessage />
       <Header />
       <MainContent />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-      <UserProfile name="Bob" age="30" bio="Passionate about technology and travel" />
+      <Counter />
+      <Footer />
     </div>
   )
 }
