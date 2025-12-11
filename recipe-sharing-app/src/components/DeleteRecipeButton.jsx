@@ -1,14 +1,18 @@
 // src/components/DeleteRecipeButton.jsx
 import useRecipeStore from '../stores/recipeStore';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const DeleteRecipeButton = ({ recipeId }) => {
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
+  const navigate = useNavigate(); // Initialize the hook
 
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {
       deleteRecipe(recipeId);
-      // Optional: Navigate away after deletion (e.g., to home page)
-      // For simplicity, we just delete and let the list update
+      // Redirect the user after successful deletion
+      // Navigate to the main list (root path)
+      navigate('/');
+      
     }
   };
 
