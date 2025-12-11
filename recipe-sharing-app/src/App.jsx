@@ -1,15 +1,36 @@
-// src/App.jsx
+// src/App.jsx (with minimal routing setup)
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
+import RecipeDetails from './components/RecipeDetails';
 
 function App() {
   return (
-    <div className="App" style={{ padding: '20px' }}>
-      <h1>Recipe Sharing Application</h1>
-      <AddRecipeForm />
-      <RecipeList />
-    </div>
+    <Router>
+      <div className="App" style={{ padding: '20px' }}>
+        <header>
+          <h1><Link to="/">Recipe Sharing App</Link></h1>
+        </header>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <AddRecipeForm />
+              <RecipeList />
+            </>
+          } />
+          {/* Note: In a real app, you'd use useParams() inside RecipeDetails */}
+          <Route path="/recipes/:recipeId" element={<RecipeDetailsWrapper />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
+
+// Helper component to pass the route param as prop for simplicity
+import { useParams } from 'react-router-dom';
+const RecipeDetailsWrapper = () => {
+  const { recipeId } = useParams();
+  return <RecipeDetails recipeId={recipeId} />;
+};
 
 export default App;
