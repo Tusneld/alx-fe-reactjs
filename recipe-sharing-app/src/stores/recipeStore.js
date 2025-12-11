@@ -1,26 +1,33 @@
-// src/stores/recipeStore.js 
+// src/stores/recipeStore.js (Further Updated)
 import create from 'zustand';
 
-const useRecipeStore = create(set => ({
+const useRecipeStore = create((set, get) => ({ // Use 'get' for filterRecipes
   recipes: [],
-  searchTerm: '', // Prepare for Task 2
+  searchTerm: '',
 
-  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+  setSearchTerm: (term) => {
+    set({ searchTerm: term });
+    get().filterRecipes(); // Immediately compute filtered results
+  },
 
-  // Action to delete a recipe
-  deleteRecipe: (recipeId) => set(state => ({
-    recipes: state.recipes.filter(recipe => recipe.id !== recipeId)
-  })),
+  // Action to compute filtered recipes based on the current searchTerm
+  filterRecipes: () => {
+    const state = get();
+    const filtered = state.recipes.filter(recipe =>
+      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+    );
+    set({ filteredRecipes: filtered });
+  },
 
-  // Action to update an existing recipe
-  updateRecipe: (updatedRecipe) => set(state => ({
-    recipes: state.recipes.map(recipe =>
-      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-    )
-  })),
-
-  setRecipes: (recipes) => set({ recipes }),
-  // ... other state/actions for tasks 2 & 3
+  // Initialize filteredRecipes to recipes whenever recipes update
+  setRecipes: (recipes) => {
+    set({ recipes });
+    get().filterRecipes(); // Re-filter whenever the main list changes
+  },
+  
+  // ... (addRecipe, deleteRecipe, updateRecipe remain the same, but should call get().filterRecipes() if needed)
+  
+  filteredRecipes: [], // New state property for filtered results
 }));
 
 export default useRecipeStore;

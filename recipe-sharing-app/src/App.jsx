@@ -1,4 +1,5 @@
 // src/App.jsx (with minimal routing setup)
+import SearchBar from './components/SearchBar';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={
             <>
               <AddRecipeForm />
+              <SearchBar />
               <RecipeList />
             </>
           } />
