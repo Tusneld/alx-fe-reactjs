@@ -1,33 +1,48 @@
-// src/stores/recipeStore.js (Further Updated)
+// src/stores/recipeStore.js (Final Update for this project)
 import create from 'zustand';
 
-const useRecipeStore = create((set, get) => ({ // Use 'get' for filterRecipes
+const useRecipeStore = create((set, get) => ({
   recipes: [],
   searchTerm: '',
+  filteredRecipes: [],
+  favorites: [], // New state for favorite IDs
+  recommendations: [], // New state for recommendations
 
-  setSearchTerm: (term) => {
-    set({ searchTerm: term });
-    get().filterRecipes(); // Immediately compute filtered results
+  addRecipe: (newRecipe) => {
+    set(state => ({ recipes: [...state.recipes, newRecipe] }));
+    get().filterRecipes();
+    get().generateRecommendations(); // Recalculate if a new recipe might be a recommendation
+  },
+  // ... (other recipe CRUD actions)
+
+  // Favorites Actions
+  addFavorite: (recipeId) => {
+    set(state => ({ favorites: [...state.favorites, recipeId] }));
+    get().generateRecommendations(); // Recalculate recommendations when favorites change
+  },
+  removeFavorite: (recipeId) => {
+    set(state => ({
+      favorites: state.favorites.filter(id => id !== recipeId)
+    }));
+    get().generateRecommendations(); // Recalculate recommendations when favorites change
   },
 
-  // Action to compute filtered recipes based on the current searchTerm
-  filterRecipes: () => {
-    const state = get();
-    const filtered = state.recipes.filter(recipe =>
-      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+  // Recommendations Action
+  generateRecommendations: () => set(state => {
+    // Simple Mock Recommendation Logic: Recommend a random subset of recipes
+    // that are NOT in the favorites list.
+    const nonFavorites = state.recipes.filter(
+      recipe => !state.favorites.includes(recipe.id)
     );
-    set({ filteredRecipes: filtered });
-  },
 
-  // Initialize filteredRecipes to recipes whenever recipes update
-  setRecipes: (recipes) => {
-    set({ recipes });
-    get().filterRecipes(); // Re-filter whenever the main list changes
-  },
-  
-  // ... (addRecipe, deleteRecipe, updateRecipe remain the same, but should call get().filterRecipes() if needed)
-  
-  filteredRecipes: [], // New state property for filtered results
+    // Pick a small, random set (e.g., up to 3)
+    const recommended = nonFavorites
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3);
+      
+    return { recommendations: recommended };
+  }),
+
+  // ... (setSearchTerm, filterRecipes, etc. from Task 2)
 }));
-
 export default useRecipeStore;
