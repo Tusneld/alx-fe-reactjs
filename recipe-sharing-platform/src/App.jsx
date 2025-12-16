@@ -1,19 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-import './App.css'
+import HomePage from './components/HomePage';
+import './index.css'; // Ensure the Tailwind CSS file is imported
 
 function App() {
-  // Test class: text-3xl, font-bold, text-blue-500, underline
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <h1 className="text-3xl font-bold underline text-blue-500">
-        Recipe Sharing Platform Setup Complete!
-      </h1>
+    // Add some global background styling
+    <div className="min-h-screen bg-gray-50">
+      <HomePage />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
