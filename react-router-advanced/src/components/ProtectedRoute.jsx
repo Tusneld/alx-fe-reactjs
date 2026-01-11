@@ -1,17 +1,17 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-// Simple mock authentication hook
+// Simple hook to simulate authentication
 const useAuth = () => {
-  // Can changed to 'true' to test the protected access
-  const user = { isAuthenticated: false }; 
-  return user.isAuthenticated;
+
+  const user = localStorage.getItem('auth') === 'true'; 
+  return { authenticated: user };
 };
 
 const ProtectedRoute = ({ children }) => {
-  const auth = useAuth();
+  const { authenticated } = useAuth();
 
-  return auth ? children : <Navigate to="/" />;
+  return authenticated ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
