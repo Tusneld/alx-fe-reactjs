@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper. Simple, rich, and delicious.",
+    "image": "https://via.placeholder.com/400x300?text=Carbonara+Image",
+    "ingredients": ["1 lb Spaghetti", "4 oz Guanciale or Pancetta", "2 Large Eggs", "1 cup Pecorino Romano cheese", "Black Pepper"],
+    "instructions": ["Boil the spaghetti.", "Cook the meat until crispy.", "Mix eggs and cheese.", "Toss pasta with meat, remove from heat, quickly mix in egg mixture to create a creamy sauce.", "Serve immediately with extra pepper."]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth, buttery & creamy tomato-based gravy. An Indian-inspired favorite.",
+    "image": "https://via.placeholder.com/400x300?text=Tikka+Masala+Image",
+    "ingredients": ["1.5 lb Chicken Breast", "1 cup Plain Yogurt", "2 tbsp Ginger-Garlic Paste", "1 can Tomato Puree", "Heavy Cream", "Garam Masala"],
+    "instructions": ["Marinate and grill the chicken.", "Sauté onions and spices.", "Add tomato puree and cook.", "Stir in cream and grilled chicken.", "Simmer until sauce thickens and serve with rice or naan."]
+  },
+  {
+    "id": 3,
+    "title": "Vegetarian Chili",
+    "summary": "A hearty and flavorful vegetarian chili packed with beans, vegetables, and a rich blend of spices. Perfect for a cold day.",
+    "image": "https://via.placeholder.com/400x300?text=Chili+Image",
+    "ingredients": ["1 Onion", "2 Bell Peppers", "2 cans Kidney Beans", "1 can Crushed Tomatoes", "Chili Powder", "Cumin"],
+    "instructions": ["Sauté the onion and peppers.", "Add spices and cook for 1 minute.", "Stir in beans and crushed tomatoes.", "Bring to a boil, then reduce heat and simmer for 30 minutes.", "Serve with toppings like sour cream and cheese."]
+  }
+]
